@@ -1,2 +1,2 @@
-celery-node-sample
-==================
+node-celery-sample
+========
