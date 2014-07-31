@@ -1,0 +1,21 @@
+# This file is sourced by /etc/init.d/rabbitmq-server. Its primary
+# reason for existing is to allow adjustment of system limits for the
+# rabbitmq-server process.
+#
+# Maximum number of open file handles. This will need to be increased
+# to handle many simultaneous connections. Refer to the system
+# documentation for ulimit (in man bash) for more information.
+#
+ulimit -n 65535
+bash -c 'echo "4096 87380 16777216" > /proc/sys/net/ipv4/tcp_rmem'
+bash -c 'echo "4096 65536 16777216" > /proc/sys/net/ipv4/tcp_wmem'
+bash -c 'echo "250 32000 100 128" > /proc/sys/kernel/sem'
+bash -c 'echo "262144" > /proc/sys/net/core/rmem_default'
+bash -c 'echo "8388608" > /proc/sys/net/core/rmem_max'
+bash -c 'echo "262144" > /proc/sys/net/core/wmem_default'
+bash -c 'echo "8388608" > /proc/sys/net/core/wmem_max'
+bash -c 'echo "8192" > /proc/sys/net/core/netdev_max_backlog'
+bash -c 'echo "8192" > /proc/sys/net/core/somaxconn'
+bash -c 'echo "1024 65000" > /proc/sys/net/ipv4/ip_local_port_range'
+bash -c 'echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse'
+
